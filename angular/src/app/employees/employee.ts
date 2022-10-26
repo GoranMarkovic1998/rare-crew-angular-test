@@ -3,7 +3,5 @@ export class Employee {
   EmployeeName: string;
   StarTimeUtc: Date;
   EndTimeUtc: Date;
-  TotalDailyHours: number;
-  EntryNotes: string;
-  DeletedOn: Date;
+  TotalHoursPerDay: number;
 }

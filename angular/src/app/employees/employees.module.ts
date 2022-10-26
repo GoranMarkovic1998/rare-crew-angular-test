@@ -1,3 +1,5 @@
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EmployeesTimeDataService } from './employees-overview/employees-time-data.service';
 import { MaterialModule } from './../material/material.module';
 import { EmployeesOverviewResolver } from './employees-overview/employees-overview.resolver';
 import { EmployeesDataService } from './employees-overview/employees-data.service';
@@ -9,7 +11,16 @@ import { EmployeesOverviewComponent } from './employees-overview/employees-overv
 
 @NgModule({
   declarations: [EmployeesOverviewComponent],
-  imports: [CommonModule, EmployeesRoutingModule, MaterialModule],
-  providers: [EmployeesDataService, EmployeesOverviewResolver],
+  imports: [
+    CommonModule,
+    EmployeesRoutingModule,
+    MaterialModule,
+    NgxChartsModule,
+  ],
+  providers: [
+    EmployeesDataService,
+    EmployeesOverviewResolver,
+    EmployeesTimeDataService,
+  ],
 })
 export class EmployeesModule {}

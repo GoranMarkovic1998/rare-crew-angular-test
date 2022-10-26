@@ -1,6 +1,9 @@
+import { EmployeesTime } from './../employees-time';
+import { EmployeesTimeDataService } from './employees-time-data.service';
 import { Employee } from './../employee';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxChartsModule, LegendPosition } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-employees-overview',
@@ -9,36 +12,34 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeesOverviewComponent implements OnInit {
   employees: Employee[];
-  displayedColumns: string[] = [
-    'Id',
-    'EmployeeName',
-    'StarTimeUtc',
-    'EndTimeUtc',
-    'TotalDailyHours',
-    'EntryNotes',
-    'DeletedOn',
-  ];
-  testStartDate: Date;
-  testEndDate: Date;
-  TotalDailyHours: number;
-  result: Employee[];
+  employeesWithHours: EmployeesTime[] = [];
+  displayedColumns: string[] = ['EmployeeName', 'TotalHoursPerMonth'];
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+  legendPosition: LegendPosition = LegendPosition.Right;
+  legendTitle: string = 'Employee name';
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private employeesTimeDataService: EmployeesTimeDataService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       (data) => (this.employees = data['employees'])
     );
 
-    this.employees.forEach((employee) => {
-      this.testStartDate = new Date(employee.StarTimeUtc);
-      this.testEndDate = new Date(employee.EndTimeUtc);
-      this.TotalDailyHours =
-        this.testEndDate.getHours() * 60 +
-        this.testEndDate.getMinutes() -
-        (this.testStartDate.getHours() * 60 + this.testStartDate.getMinutes());
-      this.TotalDailyHours = parseFloat((this.TotalDailyHours / 60).toFixed(3));
-      employee.TotalDailyHours = this.TotalDailyHours;
+    this.employeesTimeDataService.SetTotalHoursPerMonth(
+      this.employees,
+      this.employeesWithHours
+    );
+
+    this.employeesWithHours = this.employeesWithHours.filter((e) => {
+      return e.name == null ? false : true;
     });
+
+    this.employeesTimeDataService.SortByTotalHours(this.employeesWithHours);
   }
 }
