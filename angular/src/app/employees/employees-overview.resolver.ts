@@ -1,5 +1,5 @@
 import { EmployeesDataService } from './employees-data.service';
-import { Employee } from './../employee';
+import { Employee } from './employee';
 import { Injectable } from '@angular/core';
 import {
   Router,

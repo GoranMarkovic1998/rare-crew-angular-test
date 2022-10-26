@@ -1,8 +1,8 @@
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { EmployeesTimeDataService } from './employees-overview/employees-time-data.service';
+import { EmployeesTimeDataService } from './employees-time-data.service';
 import { MaterialModule } from './../material/material.module';
-import { EmployeesOverviewResolver } from './employees-overview/employees-overview.resolver';
-import { EmployeesDataService } from './employees-overview/employees-data.service';
+import { EmployeesOverviewResolver } from './employees-overview.resolver';
+import { EmployeesDataService } from './employees-data.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

@@ -1,6 +1,6 @@
-import { Employee } from '../employee';
+import { Employee } from './employee';
 import { Injectable } from '@angular/core';
-import { EmployeesTime } from '../employees-time';
+import { EmployeesTime } from './employees-time';
 
 @Injectable()
 export class EmployeesTimeDataService {

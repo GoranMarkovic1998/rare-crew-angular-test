@@ -1,5 +1,5 @@
 import { EmployeesTime } from './../employees-time';
-import { EmployeesTimeDataService } from './employees-time-data.service';
+import { EmployeesTimeDataService } from '../employees-time-data.service';
 import { Employee } from './../employee';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

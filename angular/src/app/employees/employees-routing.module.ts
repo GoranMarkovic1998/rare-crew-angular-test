@@ -1,4 +1,4 @@
-import { EmployeesOverviewResolver } from './employees-overview/employees-overview.resolver';
+import { EmployeesOverviewResolver } from './employees-overview.resolver';
 import { EmployeesOverviewComponent } from './employees-overview/employees-overview.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
